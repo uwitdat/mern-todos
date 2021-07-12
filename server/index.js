@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 })
 
 
-
+const PORT = process.env.PORT || 5000
 mongoose.connect(db,
     {
         useNewUrlParser: true,
@@ -29,8 +29,9 @@ mongoose.connect(db,
     },
 
 ).then(() => {
-    console.log(`server is running on port`)
-    app.listen(3001)
+    app.listen(3001, () => {
+        console.log(`server is running on port ${PORT}`)
+    })
 }).catch(err => {
     console.log('ERROR', err)
 })
